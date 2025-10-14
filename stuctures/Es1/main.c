@@ -38,6 +38,10 @@ void printListAuto(struct Auto *list, int l) {
     }
 }
 
+/// @brief Find and return the Auto with the minimum price
+/// @param garage the list of auto
+/// @param l the lenght of the list of garage
+/// @return the auto with the minimum cost
 struct Auto getMinPrice(struct Auto *garage, int l)
 {
     if (l == 0)
@@ -57,6 +61,10 @@ struct Auto getMinPrice(struct Auto *garage, int l)
     return garage[pos];
 }
 
+/// @brief Get the Auto with the maximum cost. If the lenght passed as param is equal to 0 return the EMPTY_AUTO.
+/// @param garge
+/// @param l
+/// @return 
 struct Auto getMaxPrice(struct Auto *garage, int l)
 {
     if (l == 0)
@@ -95,6 +103,7 @@ void sort(struct Auto *garage, int l)
     }
 }
 
+/// @brief Find and return the Auto with the targa that is equal to the param. If the lenght passed as param is 0 return EMPTTY_AUTO.
 struct Auto find(struct Auto *garage, int l, char *targa)
 {
     for (int i = 0; i < l; i++)
