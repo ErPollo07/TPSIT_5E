@@ -17,6 +17,7 @@ ciascuna città: Quante persone vi risiedono, L’età media dei residenti
 
 
 #include <stdio.h>
+#include <string.h>
 
 typedef struct  {
     char *nome;
@@ -105,6 +106,28 @@ Persona printByYear(Persona persone[], int l, int year)
     }
 
     return EMPTY_PERSONA;
+}
+
+int peopleInCity(Persona persone[], int l, char city[]) {
+    int count = 0;
+    for (int i = 0; i < l; i++) {
+        if (strcmp(persone[i].residenza, city) == 0)
+            count++;
+    }
+
+    return 0;
+}
+
+double avarageAgeInCity(Persona persone[], int l, char city[]) {
+    int sum = 0;
+    int count = peopleInCity(persone, l, city);
+
+    for (int i = 0; i < l; i++) {
+        if (strcmp(persone[i].residenza, city) == 0)
+            sum += persone[i].eta;
+    }
+
+    return sum / count;
 }
 
 int main(int argc, char *argv[]) {
