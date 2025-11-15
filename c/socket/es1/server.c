@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 
     int socketfd, soa, destlen = sizeof(destination);  
     socketfd = socket(AF_INET, SOCK_STREAM, 0);
-    bind(socketfd, (struct sockaddr*)&destination, sizeof(destination));
+    bind(socketfd, (struct sockaddr*)&destination, sizeof(destination)); // Serve per permettere che la socket sia raggiungibile dal client
     listen(socketfd, 10);
 
     char message[20] = "";
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
         printf("Server in ascolto ...\n");
         fflush(stdout);
 
-        soa = accept(socketfd, (struct sockaddr*)&destination, &destlen);
+        soa = accept(socketfd, (struct sockaddr*)&destination, &destlen));
         
         read(soa, message, sizeof(message));
         write(soa, msg_received, sizeof(msg_received));
