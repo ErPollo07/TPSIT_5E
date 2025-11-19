@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
         printf("Server in ascolto ...\n");
         fflush(stdout);
 
-        soa = accept(socketfd, (struct sockaddr*)&destination, &destlen));
+        soa = accept(socketfd, (struct sockaddr*)&destination, &destlen);
         
         read(soa, message, sizeof(message));
         write(soa, msg_received, sizeof(msg_received));

@@ -17,15 +17,40 @@ int main() {
     destination.sin_family = AF_INET;
     destination.sin_port = htons(SERVER_PORT);
 
-    inet_pton(AF_INET, "127.0.0.1", );
+    inet_pton(AF_INET, "127.0.0.1", &destination.sin_addr);
 
-    int socketfd = socket(AF_INET, SOCK_STREAM, 0);
-
-    connect(socketfd, (struct sockaddr*)&destination, sizeof(destination));
-
-    write(socketfd, "WOW\0", 4);
-
+    
+    int socketfd;
     char message[20];
-    
-    
+    char serverMessage[20];
+
+    for (;;) {
+        socketfd = socket(AF_INET, SOCK_STREAM, 0);
+
+        if (socketfd < 0) {
+            printf("[ERROR] - Error to open the socket");
+            break;
+        }
+
+        int connection = connect(socketfd, (struct sockaddr*)&destination, sizeof(destination));
+
+        if (connection < 0) {
+            perror("[ERROR] - connection");
+            break;
+        }
+
+        printf("Inserisci il codice della citta' di partenza: ");
+        fgets(message, sizeof(message), stdin);
+        printf("Message: %s", message);
+
+        write(socketfd, message, strlen(message));
+        read(socketfd, serverMessage, sizeof(serverMessage));
+
+        printf("Server message: %s\n", serverMessage);
+
+        close(socketfd);
+    }
+
+    printf("\n\n");
+    return 0;    
 }
