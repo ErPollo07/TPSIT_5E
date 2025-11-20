@@ -9,6 +9,10 @@
 #include <unistd.h>     // file header che consente l'accesso alle API dello standard POSIX
 #include <arpa/inet.h>
 
+/*
+Il codice del server lo fa martino
+*/
+
 #define SERVER_PORT 6967
 
 int main() {
